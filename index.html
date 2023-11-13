@@ -18,13 +18,38 @@
 
   <body>
     <header class="purple-background">
-      <div class="container column-full column-half">
+      <div class="container column-full">
         <div class="code-journal-header">Code Journal</div>
       </div>
     </header>
 
     <main class="container">
-      <div data-view="entry-form"></div>
+      <div class="body-main-header row">New Entry</div>
+
+      <div data-view="entry-form column-full">
+        <div class="row">
+          <div class="column-half">
+            <img src="images/placeholder-image-square.jpg" />
+          </div>
+
+          <div class="column-half">
+            <p class="input-title">Title</p>
+            <input type="text" class="actual-input" />
+            <p class="input-photo">Photo URL</p>
+            <input type="text" class="actual-input" />
+          </div>
+
+          <div class="row column-full">
+            <p class="input-notes">Notes</p>
+            <textarea cols="100" rows="20" class="notes-input"></textarea>
+          </div>
+
+          <div class="row button-container column-full">
+            <button type="button" class="save-button-text">SAVE</button>
+          </div>
+        </div>
+      </div>
+
       <div data-view="entries" class="hidden"></div>
     </main>
 
