@@ -1,4 +1,4 @@
-// /* global data */
+/* global data */
 
 const $displayedImage = document.getElementById('displayed-image');
 const $inputImage = document.getElementById('input-image-url');
@@ -9,3 +9,21 @@ function urlToImage(event) {
 }
 
 $inputImage.addEventListener('input', urlToImage);
+
+const $titleInput = document.querySelector('.actual-title-input');
+const $photoUrlInput = document.querySelector('.actual-photo-url-input');
+const $notesInput = document.querySelector('.notes-input');
+const $formInput = document.querySelector('.form');
+
+$formInput.addEventListener('submit', function (event) {
+  event.preventDefault();
+  data.entries.push({
+    title: $titleInput.value,
+    url: $photoUrlInput.value,
+    notes: $notesInput.value,
+    entryID: data.nextEntryId,
+  });
+  data.nextEntryId = data.nextEntryId + 1;
+  $photoUrlInput.src = 'images/placeholder-image-square.jpg';
+  $formInput.requestFullscreen();
+});
