@@ -26,29 +26,47 @@
     <main class="container">
       <div class="body-main-header row">New Entry</div>
 
-      <div data-view="entry-form column-full">
-        <div class="row">
-          <div class="column-half">
-            <img src="images/placeholder-image-square.jpg" />
-          </div>
+      <form>
+        <div data-view="entry-form column-full">
+          <div class="row">
+            <div class="column-half">
+              <img
+                src="images/placeholder-image-square.jpg"
+                id="displayed-image" />
+            </div>
 
-          <div class="column-half">
-            <p class="input-title">Title</p>
-            <input type="text" class="actual-input" />
-            <p class="input-photo">Photo URL</p>
-            <input type="text" class="actual-input" />
-          </div>
+            <div class="column-half">
+              <div class="title-group">
+                <label for="title" class="input-name">Title</label>
+                <input type="text" class="actual-input" name="title" required />
+              </div>
 
-          <div class="row column-full">
-            <p class="input-notes">Notes</p>
-            <textarea cols="100" rows="20" class="notes-input"></textarea>
-          </div>
+              <div>
+                <label for="photo-url" class="input-name">Photo URL</label>
+                <input
+                  type="text"
+                  class="actual-input"
+                  name="photo-url"
+                  id="input-image-url"
+                  required />
+              </div>
+            </div>
 
-          <div class="row button-container column-full">
-            <button type="button" class="save-button-text">SAVE</button>
+            <div class="row column-full">
+              <p class="input-notes">Notes</p>
+              <textarea
+                cols="100"
+                rows="20"
+                class="notes-input"
+                required></textarea>
+            </div>
+
+            <div class="row button-container column-full">
+              <button type="button" class="save-button-text">SAVE</button>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
 
       <div data-view="entries" class="hidden"></div>
     </main>

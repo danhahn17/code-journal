@@ -20,14 +20,12 @@
   padding-left: 10px;
 }
 
-.input-title {
-  font-weight: bolder;
-  margin-top: 0;
+.title-group {
+  padding-bottom: 25px;
 }
 
-.input-photo {
+.input-name {
   font-weight: bolder;
-  margin-top: 15px;
 }
 
 .input-notes {
@@ -35,13 +33,9 @@
   margin-top: 15px;
 }
 
-img {
-  width: 100%;
-}
-
 .actual-input {
   width: 100%;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 5px;
   border-color: rgb(181, 181, 181);
   border-style: solid;
@@ -49,10 +43,14 @@ img {
 
 .notes-input {
   width: 100%;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 5px;
   border-color: rgb(181, 181, 181);
   border-style: solid;
+}
+
+img {
+  width: 100%;
 }
 
 .button-container {
