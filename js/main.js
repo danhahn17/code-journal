@@ -17,13 +17,13 @@ const $formInput = document.querySelector('.form');
 
 $formInput.addEventListener('submit', function (event) {
   event.preventDefault();
-  data.entries.push({
+  data.entries.unshift({
     title: $titleInput.value,
     url: $photoUrlInput.value,
     notes: $notesInput.value,
     entryID: data.nextEntryId,
   });
   data.nextEntryId = data.nextEntryId + 1;
-  $photoUrlInput.src = 'images/placeholder-image-square.jpg';
-  $formInput.requestFullscreen();
+  $displayedImage.src = 'images/placeholder-image-square.jpg';
+  $formInput.reset();
 });
