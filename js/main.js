@@ -27,3 +27,36 @@ $formInput.addEventListener('submit', function (event) {
   $displayedImage.src = 'images/placeholder-image-square.jpg';
   $formInput.reset();
 });
+
+// function renderEntry(entry) {
+//   const $returnEntry = document.createElement('li');
+
+//   const $rowDiv = document.createElement('div');
+//   $rowDiv.className = 'row';
+
+//   const $firstColumnHalfDiv = document.createElement('div');
+//   $firstColumnHalfDiv.className = 'column-half';
+
+//   const $imageEntry = document.createElement('img');
+//   $imageEntry.setAttribute('src', $photoUrlInput);
+//   $imageEntry.className = 'dummy-image';
+//   $imageEntry.setAttribute('alt', 'url image');
+
+//   const $secondColumnHalfDiv = document.createElement('div');
+//   $secondColumnHalfDiv.className = 'column-half';
+
+//   const $titleEntry = document.createElement('div');
+//   $titleEntry.className = 'entry-image-title text-spacing';
+
+//   const $notesEntry = document.createElement('div');
+//   $notesEntry.className = 'text-spacing';
+
+//   $returnEntry.appendChild($rowDiv);
+//   $rowDiv.appendChild($firstColumnHalfDiv);
+//   $firstColumnHalfDiv.appendChild($imageEntry);
+//   $rowDiv.appendChild($secondColumnHalfDiv);
+//   $secondColumnHalfDiv.appendChild($titleEntry);
+//   $secondColumnHalfDiv.appendChild($notesEntry);
+
+//   return $returnEntry;
+// }
