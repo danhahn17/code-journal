@@ -24,20 +24,21 @@
     </header>
 
     <main class="container">
-      <div class="body-main-header row">New Entry</div>
+      <div data-view="entry-form">
+        <div class="body-main-header row">New Entry</div>
 
-      <form class="form">
-        <div data-view="entry-form column-full">
+        <form class="form">
           <div class="row">
             <div class="column-half">
               <img
                 src="images/placeholder-image-square.jpg"
-                id="displayed-image" />
+                id="displayed-image"
+                alt="blank image" />
             </div>
 
             <div class="column-half">
               <div class="title-group">
-                <label for="title" class="input-name">Title</label>
+                <label for="input-title" class="input-name">Title</label>
                 <input
                   type="text"
                   class="actual-title-input"
@@ -47,7 +48,9 @@
               </div>
 
               <div>
-                <label for="photo-url" class="input-name">Photo URL</label>
+                <label for="input-image-url" class="input-name"
+                  >Photo URL</label
+                >
                 <input
                   type="text"
                   class="actual-photo-url-input"
@@ -58,7 +61,7 @@
             </div>
 
             <div class="row column-full">
-              <p class="input-notes">Notes</p>
+              <label for="notes" class="input-notes">Notes</label>
               <textarea
                 cols="100"
                 rows="20"
@@ -72,9 +75,8 @@
               <button class="save-button-text">SAVE</button>
             </div>
           </div>
-        </div>
-      </form>
-
+        </form>
+      </div>
       <div data-view="entries" class="hidden"></div>
     </main>
 
