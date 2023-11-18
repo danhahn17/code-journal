@@ -18,15 +18,15 @@
 
   <body>
     <header class="purple-background">
-      <div class="container column-full">
+      <div class="container column-full row">
         <div class="code-journal-header">Code Journal</div>
+        <a href="#" class="entries-header">Entries</a>
       </div>
     </header>
 
     <main class="container">
       <div data-view="entry-form">
         <div class="body-main-header row">New Entry</div>
-
         <form class="form">
           <div class="row">
             <div class="column-half">
@@ -35,7 +35,6 @@
                 id="displayed-image"
                 alt="blank image" />
             </div>
-
             <div class="column-half">
               <div class="title-group">
                 <label for="input-title" class="input-name">Title</label>
@@ -46,7 +45,6 @@
                   id="input-title"
                   required />
               </div>
-
               <div>
                 <label for="input-image-url" class="input-name"
                   >Photo URL</label
@@ -59,7 +57,6 @@
                   required />
               </div>
             </div>
-
             <div class="row column-full">
               <label for="notes" class="input-notes">Notes</label>
               <textarea
@@ -70,14 +67,25 @@
                 name="notes"
                 required></textarea>
             </div>
-
             <div class="row button-container column-full">
               <button class="save-button-text">SAVE</button>
             </div>
           </div>
         </form>
       </div>
-      <div data-view="entries" class="hidden"></div>
+
+      <div data-view="entries" class="hidden">
+        <div class="body-entries-header column-full row">
+          Entries
+          <button class="new-button">NEW</button>
+        </div>
+
+        <div class="centered-text no-entry">
+          There are currently no entries - please create a new entry.
+        </div>
+
+        <ul class="first-list"></ul>
+      </div>
     </main>
 
     <script src="js/data.js"></script>

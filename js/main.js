@@ -17,13 +17,99 @@ const $formInput = document.querySelector('.form');
 
 $formInput.addEventListener('submit', function (event) {
   event.preventDefault();
-  data.entries.unshift({
+  const submitObject = {
     title: $titleInput.value,
     url: $photoUrlInput.value,
     notes: $notesInput.value,
     entryID: data.nextEntryId,
-  });
+  };
+  data.entries.unshift(submitObject);
+  $unorderedList.prepend(renderEntry(submitObject));
   data.nextEntryId = data.nextEntryId + 1;
   $displayedImage.src = 'images/placeholder-image-square.jpg';
   $formInput.reset();
+  viewSwap('entries');
+  toggleNoEntries();
+});
+
+function renderEntry(entry) {
+  const $returnEntry = document.createElement('li');
+
+  const $rowDiv = document.createElement('div');
+  $rowDiv.className = 'row';
+
+  const $firstColumnHalfDiv = document.createElement('div');
+  $firstColumnHalfDiv.className = 'column-half';
+
+  const $imageEntry = document.createElement('img');
+  $imageEntry.setAttribute('src', entry.url);
+  $imageEntry.className = 'dummy-image';
+  $imageEntry.setAttribute('alt', 'url image');
+
+  const $secondColumnHalfDiv = document.createElement('div');
+  $secondColumnHalfDiv.className = 'column-half';
+
+  const $titleEntry = document.createElement('div');
+  $titleEntry.className = 'entry-image-title text-spacing';
+  $titleEntry.textContent = entry.title;
+
+  const $notesEntry = document.createElement('div');
+  $notesEntry.className = 'text-spacing';
+  $notesEntry.textContent = entry.notes;
+
+  $returnEntry.appendChild($rowDiv);
+  $rowDiv.appendChild($firstColumnHalfDiv);
+  $firstColumnHalfDiv.appendChild($imageEntry);
+  $rowDiv.appendChild($secondColumnHalfDiv);
+  $secondColumnHalfDiv.appendChild($titleEntry);
+  $secondColumnHalfDiv.appendChild($notesEntry);
+
+  return $returnEntry;
+}
+
+const $unorderedList = document.querySelector('.first-list');
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    const existingEntries = renderEntry(data.entries[i]);
+    $unorderedList.appendChild(existingEntries);
+  }
+  toggleNoEntries();
+  viewSwap(data.view);
+});
+
+const $noEntry = document.querySelector('.no-entry');
+
+function toggleNoEntries() {
+  if (data.entries.length === 0) {
+    $noEntry.className = 'centered-text no-entry';
+  } else {
+    $noEntry.className = 'centered-text no-entry hidden';
+  }
+}
+
+const $entries = document.querySelector('[data-view=entries]');
+const $entryForm = document.querySelector('[data-view=entry-form]');
+
+function viewSwap(swappyswappy) {
+  if (swappyswappy === 'entries') {
+    $entries.className = '';
+    $entryForm.className = 'hidden';
+    data.view = swappyswappy;
+  } else if (swappyswappy === 'entry-form') {
+    $entries.className = 'hidden';
+    $entryForm.className = '';
+    data.view = swappyswappy;
+  }
+}
+
+const $entriesAnchor = document.querySelector('a');
+const $newButton = document.querySelector('.new-button');
+
+$entriesAnchor.addEventListener('click', function () {
+  viewSwap('entries');
+});
+
+$newButton.addEventListener('click', function () {
+  viewSwap('entry-form');
 });
