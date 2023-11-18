@@ -78,6 +78,7 @@ img {
   color: white;
   font-size: 20px;
   padding: 20px;
+  text-decoration: none;
 }
 
 .body-entries-header {
@@ -96,6 +97,7 @@ img {
   height: 35px;
   width: 70px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 ul {
@@ -112,4 +114,11 @@ ul {
 
 .text-spacing {
   padding-top: 25px;
+}
+
+.centered-text {
+  padding-top: 75px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20px;
 }
