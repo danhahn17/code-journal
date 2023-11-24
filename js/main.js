@@ -34,6 +34,7 @@ $formInput.addEventListener('submit', function (event) {
 
 function renderEntry(entry) {
   const $returnEntry = document.createElement('li');
+  // $returnEntry.setAttribute('data-entry-id', entryID);
 
   const $rowDiv = document.createElement('div');
   $rowDiv.className = 'row';
@@ -57,11 +58,15 @@ function renderEntry(entry) {
   $notesEntry.className = 'text-spacing';
   $notesEntry.textContent = entry.notes;
 
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.className = 'fa-solid fa-pencil';
+
   $returnEntry.appendChild($rowDiv);
   $rowDiv.appendChild($firstColumnHalfDiv);
   $firstColumnHalfDiv.appendChild($imageEntry);
   $rowDiv.appendChild($secondColumnHalfDiv);
   $secondColumnHalfDiv.appendChild($titleEntry);
+  $titleEntry.appendChild($pencilIcon);
   $secondColumnHalfDiv.appendChild($notesEntry);
 
   return $returnEntry;
