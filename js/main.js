@@ -138,12 +138,15 @@ $newButton.addEventListener('click', function () {
 const $ulElement = document.querySelector('ul');
 const $editHeader = document.querySelector('.body-main-header');
 const $deleteButton = document.querySelector('.delete-button');
+// let $clicked = 0;
+
 $ulElement.addEventListener('click', function (event) {
   if (event.target.tagName === 'I') {
     viewSwap('entry-form');
     const makeNumber = parseInt(
       event.target.closest('li').getAttribute('data-entry-id')
     );
+    // $clicked = makeNumber;
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryID === makeNumber) {
         data.editing = data.entries[i];
@@ -170,4 +173,8 @@ function hidePopUp(event) {
 }
 $cancelButton.addEventListener('click', hidePopUp);
 
-// const $confirmButton = document.querySelector('.delete-button-confirm');
+const $confirmButton = document.querySelector('.delete-button-confirm');
+function terminator(event) {
+  // const $liClicked = document.querySelector(`[data-entry-id='${$clicked}']`);
+}
+$confirmButton.addEventListener('click', terminator);
