@@ -23,17 +23,34 @@ $formInput.addEventListener('submit', function (event) {
     notes: $notesInput.value,
     entryID: data.nextEntryId,
   };
-  data.entries.unshift(submitObject);
-  $unorderedList.prepend(renderEntry(submitObject));
-  data.nextEntryId = data.nextEntryId + 1;
-  $displayedImage.src = 'images/placeholder-image-square.jpg';
-  $formInput.reset();
+  if (data.editing === null) {
+    data.entries.unshift(submitObject);
+    $unorderedList.prepend(renderEntry(submitObject));
+    data.nextEntryId = data.nextEntryId + 1;
+    $displayedImage.src = 'images/placeholder-image-square.jpg';
+    $formInput.reset();
+  } else {
+    submitObject.entryID = data.editing.entryID;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (submitObject.entryID === data.entries[i].entryID) {
+        data.entries[i] = submitObject;
+      }
+    }
+    const $submitObject = renderEntry(submitObject);
+    const $originalLi = document.querySelector(
+      `[data-entry-id='${data.editing.entryID}']`
+    );
+    $originalLi.replaceWith($submitObject);
+    $editHeader.textContent = 'New Entry';
+    data.editing = null;
+  }
   viewSwap('entries');
   toggleNoEntries();
 });
 
 function renderEntry(entry) {
   const $returnEntry = document.createElement('li');
+  $returnEntry.setAttribute('data-entry-id', entry.entryID);
 
   const $rowDiv = document.createElement('div');
   $rowDiv.className = 'row';
@@ -57,11 +74,15 @@ function renderEntry(entry) {
   $notesEntry.className = 'text-spacing';
   $notesEntry.textContent = entry.notes;
 
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.className = 'fa-solid fa-pencil';
+
   $returnEntry.appendChild($rowDiv);
   $rowDiv.appendChild($firstColumnHalfDiv);
   $firstColumnHalfDiv.appendChild($imageEntry);
   $rowDiv.appendChild($secondColumnHalfDiv);
   $secondColumnHalfDiv.appendChild($titleEntry);
+  $titleEntry.appendChild($pencilIcon);
   $secondColumnHalfDiv.appendChild($notesEntry);
 
   return $returnEntry;
@@ -112,4 +133,25 @@ $entriesAnchor.addEventListener('click', function () {
 
 $newButton.addEventListener('click', function () {
   viewSwap('entry-form');
+});
+
+const $ulElement = document.querySelector('ul');
+const $editHeader = document.querySelector('.body-main-header');
+$ulElement.addEventListener('click', function (event) {
+  if (event.target.tagName === 'I') {
+    viewSwap('entry-form');
+    const makeNumber = parseInt(
+      event.target.closest('li').getAttribute('data-entry-id')
+    );
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryID === makeNumber) {
+        data.editing = data.entries[i];
+      }
+    }
+    $titleInput.value = data.editing.title;
+    $photoUrlInput.value = data.editing.url;
+    $notesInput.value = data.editing.notes;
+    $displayedImage.src = data.editing.url;
+    $editHeader.textContent = 'Edit Entry';
+  }
 });
