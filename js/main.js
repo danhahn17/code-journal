@@ -23,11 +23,27 @@ $formInput.addEventListener('submit', function (event) {
     notes: $notesInput.value,
     entryID: data.nextEntryId,
   };
-  data.entries.unshift(submitObject);
-  $unorderedList.prepend(renderEntry(submitObject));
-  data.nextEntryId = data.nextEntryId + 1;
-  $displayedImage.src = 'images/placeholder-image-square.jpg';
-  $formInput.reset();
+  if (data.editing === null) {
+    data.entries.unshift(submitObject);
+    $unorderedList.prepend(renderEntry(submitObject));
+    data.nextEntryId = data.nextEntryId + 1;
+    $displayedImage.src = 'images/placeholder-image-square.jpg';
+    $formInput.reset();
+  } else {
+    submitObject.entryID = data.editing.entryID;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (submitObject.entryID === data.entries[i].entryID) {
+        data.entries[i] = submitObject;
+      }
+    }
+    const $submitObject = renderEntry(submitObject);
+    const $originalLi = document.querySelector(
+      `[data-entry-id='${data.editing.entryID}']`
+    );
+    $originalLi.replaceWith($submitObject);
+    $editHeader.textContent = 'New Entry';
+    data.editing = null;
+  }
   viewSwap('entries');
   toggleNoEntries();
 });
