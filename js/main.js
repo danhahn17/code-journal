@@ -34,7 +34,7 @@ $formInput.addEventListener('submit', function (event) {
 
 function renderEntry(entry) {
   const $returnEntry = document.createElement('li');
-  // $returnEntry.setAttribute('data-entry-id', entryID);
+  $returnEntry.setAttribute('data-entry-id', entry.entryID);
 
   const $rowDiv = document.createElement('div');
   $rowDiv.className = 'row';
@@ -117,4 +117,25 @@ $entriesAnchor.addEventListener('click', function () {
 
 $newButton.addEventListener('click', function () {
   viewSwap('entry-form');
+});
+
+const $ulElement = document.querySelector('ul');
+const $editHeader = document.querySelector('.body-main-header');
+$ulElement.addEventListener('click', function (event) {
+  if (event.target.tagName === 'I') {
+    viewSwap('entry-form');
+    const makeNumber = parseInt(
+      event.target.closest('li').getAttribute('data-entry-id')
+    );
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryID === makeNumber) {
+        data.editing = data.entries[i];
+      }
+    }
+    $titleInput.value = data.editing.title;
+    $photoUrlInput.value = data.editing.url;
+    $notesInput.value = data.editing.notes;
+    $displayedImage.src = data.editing.url;
+    $editHeader.textContent = 'Edit Entry';
+  }
 });
