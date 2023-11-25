@@ -137,6 +137,7 @@ $newButton.addEventListener('click', function () {
 
 const $ulElement = document.querySelector('ul');
 const $editHeader = document.querySelector('.body-main-header');
+const $deleteButton = document.querySelector('.delete-button');
 $ulElement.addEventListener('click', function (event) {
   if (event.target.tagName === 'I') {
     viewSwap('entry-form');
@@ -153,5 +154,6 @@ $ulElement.addEventListener('click', function (event) {
     $notesInput.value = data.editing.notes;
     $displayedImage.src = data.editing.url;
     $editHeader.textContent = 'Edit Entry';
+    $deleteButton.className = 'delete-button';
   }
 });

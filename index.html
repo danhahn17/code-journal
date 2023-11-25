@@ -24,6 +24,18 @@
       </div>
     </header>
 
+    <div class="overlay">
+      <div class="pop-up-container">
+        <div class="pop-up-text row">
+          Would you like to delete this entry?
+          <div class="row pop-up-buttons">
+            <button class="delete-button-cancel">Cancel</button>
+            <button class="delete-button-confirm">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main class="container">
       <div data-view="entry-form">
         <div class="body-main-header row">New Entry</div>
@@ -68,7 +80,12 @@
                 required></textarea>
             </div>
             <div class="row button-container column-full">
-              <button class="save-button-text">SAVE</button>
+              <div class="column-half-delete">
+                <button class="delete-button hidden">Delete Entry</button>
+              </div>
+              <div class="column-half-save">
+                <button class="save-button-text">SAVE</button>
+              </div>
             </div>
           </div>
         </form>
@@ -79,11 +96,9 @@
           Entries
           <button class="new-button">NEW</button>
         </div>
-
         <div class="centered-text no-entry">
           There are currently no entries - please create a new entry.
         </div>
-
         <ul class="first-list"></ul>
       </div>
     </main>
