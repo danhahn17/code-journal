@@ -157,3 +157,17 @@ $ulElement.addEventListener('click', function (event) {
     $deleteButton.className = 'delete-button';
   }
 });
+
+function showPopUp(event) {
+  $overlay.className = 'overlay';
+}
+$deleteButton.addEventListener('click', showPopUp);
+
+const $cancelButton = document.querySelector('.delete-button-cancel');
+const $overlay = document.querySelector('.overlay');
+function hidePopUp(event) {
+  $overlay.className = 'overlay hidden';
+}
+$cancelButton.addEventListener('click', hidePopUp);
+
+// const $confirmButton = document.querySelector('.delete-button-confirm');

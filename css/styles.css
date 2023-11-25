@@ -143,9 +143,8 @@ ul {
 }
 
 .overlay {
-  display: flex-wrap;
   background: rgb(50, 50, 50, 0.65);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
