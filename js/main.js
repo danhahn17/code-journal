@@ -138,7 +138,7 @@ $newButton.addEventListener('click', function () {
 const $ulElement = document.querySelector('ul');
 const $editHeader = document.querySelector('.body-main-header');
 const $deleteButton = document.querySelector('.delete-button');
-// let $clicked = 0;
+let $clicked = 0;
 
 $ulElement.addEventListener('click', function (event) {
   if (event.target.tagName === 'I') {
@@ -146,7 +146,7 @@ $ulElement.addEventListener('click', function (event) {
     const makeNumber = parseInt(
       event.target.closest('li').getAttribute('data-entry-id')
     );
-    // $clicked = makeNumber;
+    $clicked = makeNumber;
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryID === makeNumber) {
         data.editing = data.entries[i];
@@ -174,7 +174,19 @@ function hidePopUp(event) {
 $cancelButton.addEventListener('click', hidePopUp);
 
 const $confirmButton = document.querySelector('.delete-button-confirm');
+const $popUpContainer = document.querySelector('.pop-up-container');
+
 function terminator(event) {
-  // const $liClicked = document.querySelector(`[data-entry-id='${$clicked}']`);
+  const $liClicked = document.querySelector(`[data-entry-id='${$clicked}']`);
+  for (let i = 0; i < data.entries.length; i++) {
+    if ($clicked === data.entries[i].entryID) {
+      data.entries.splice(i, 1);
+    }
+  }
+  $liClicked.remove();
+  toggleNoEntries();
+  $overlay.className = 'overlay hidden';
+  $popUpContainer.className = 'pop-up-container hidden';
+  viewSwap('entry');
 }
 $confirmButton.addEventListener('click', terminator);
