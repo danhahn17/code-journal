@@ -62,7 +62,7 @@ img {
 
 .button-container {
   padding-top: 12px;
-  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .save-button-text {
@@ -82,7 +82,7 @@ img {
 }
 
 .body-entries-header {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 900;
   padding-top: 20px;
   justify-content: space-between;
@@ -123,4 +123,79 @@ ul {
   text-align: center;
   font-weight: bolder;
   font-size: 20px;
+}
+
+.delete-button {
+  background-color: white;
+  color: red;
+  border: none;
+  text-decoration: underline;
+}
+
+.column-half-delete {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.column-half-save {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.overlay {
+  background: rgb(50, 50, 50, 0.65);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.pop-up-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.pop-up-text {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: rgba(77, 38, 118, 0.918);
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  margin-top: 200px;
+  padding-top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: bolder;
+}
+
+.pop-up-button-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin-top: 250px;
+}
+
+.pop-up-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  padding: 25px;
+}
+
+.delete-button-cancel {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(94, 90, 90);
+  color: white;
+}
+
+.delete-button-confirm {
+  border-radius: 5px;
+  background-color: rgb(115, 131, 201);
+  color: white;
 }
